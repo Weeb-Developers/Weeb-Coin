@@ -1,1 +1,16 @@
 @import 'bootstrap';
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+.nav-bar {
+  display: flex;
+  align-items: flex-end;
+}
+.nav-bar ul {
+  padding-left: 0;
+}
+.nav-link {
+  margin: 10px;
+}
