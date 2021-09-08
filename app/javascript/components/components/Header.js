@@ -11,7 +11,7 @@ class Header extends Component {
         <div className='nav-bar'>
         <ul><NavLink to="/" className='nav-link'>Home</NavLink>{" "}</ul>
         <ul><NavLink to="/aboutus" className='nav-link'>About Us</NavLink>{" "}</ul>
-        <ul><NavLink to="/learn" className='nav-link'>Crypto Basics</NavLink></ul>
+        <ul><NavLink to="/cryptoinfo" className='nav-link'>Crypto Basics</NavLink></ul>
         <ul>
           {logged_in && (
             <a href={sign_out_route} className="nav-link">
