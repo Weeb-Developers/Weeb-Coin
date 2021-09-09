@@ -19,7 +19,6 @@ class App extends Component {
     this.state = {
       coins: [],
       portfolios: [],
-      total_worth: []
     };
   }
   componentDidMount() {
@@ -40,6 +39,7 @@ class App extends Component {
         console.log("index errors:", errors);
       });
   };
+
   getPortfolio = () => {
     fetch("/portfolios")
       .then((response) => {
@@ -53,16 +53,6 @@ class App extends Component {
         console.log("index errors:", errors);
       });
   };
-
-  totalWorth = () => {
-    let worth = []
-    console.log("testing", this.state.portfolios)
-    worth = this.state.portfolios.map((portfolio) => {
-      return portfolio.coin.price * portfolio.current_quantitiy
-    })
-    console.log("worth", worth)
-    this.setState({total_worth: worth})
-  }
 
   render() {
     const {
@@ -83,8 +73,6 @@ class App extends Component {
           sign_out_route={sign_out_route}
         />
         <Switch>
-          {/* <Route exact path='/' component={ <Home />}/> */}
-
           <Route
             exact
             path="/"
@@ -106,6 +94,7 @@ class App extends Component {
               return <Coin coin={coin} logged_in={logged_in} />;
             }}
           />
+
           <Route path="/cryptoinfo" component={CryptoInfo} />
           <Route
             path="/portfolio"
@@ -115,12 +104,11 @@ class App extends Component {
                   logged_in={logged_in}
                   current_user={current_user}
                   portfolios={this.state.portfolios}
-                  total_worth={this.state.total_worth}
-                  // totalWorth={this.totalWorth()}
                 />
               );
             }}
           />
+          
           <Route component={NotFound} />
         </Switch>
         <Footer logged_in={logged_in} />

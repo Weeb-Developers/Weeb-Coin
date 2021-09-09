@@ -2,15 +2,26 @@ import React, { Component } from "react";
 import { Card, Row, Col, CardText, CardTitle } from "reactstrap";
 import { Link } from "react-router-dom";
 class Portfolio extends Component {
-
-
+  constructor(){
+    super();
+    this.state = {
+        
+    }
+  }
+  getTotalWorth = () => {
+    let sum = 0
+    this.props.portfolios.forEach(portfolio => {
+      sum += portfolio.coin.price * portfolio.current_quantitiy
+    })
+    return sum
+  }
   render() {
     return (
       <>
         <h1>
           Hello {this.props.logged_in && this.props.current_user.username}
         </h1>
-        <h3>Total Worth: ${this.props.total_worth && this.props.total_worth}</h3>
+        <h3>Total Worth: {this.getTotalWorth()}</h3>
         <div>
           Current Crypto Curriences
           {this.props.portfolios.map((portfolio) =>{
