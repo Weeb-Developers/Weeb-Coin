@@ -21,7 +21,8 @@ end
 
 
 coins = [
-{ name:"bitcoin",
+{ 
+    name:"bitcoin",
 symbol:"BTC",
 price:50000.5,
 volume_24h: 100000000.25,
