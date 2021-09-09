@@ -16,9 +16,7 @@ class Home extends Component {
                                         <CardText>Name: {coin.name} </CardText>
                                         <CardText>Symbol: { coin.symbol } </CardText>
                                         <CardText>Price: { coin.price } </CardText>
-                                        <CardText>Volume: { coin.volume_24h } </CardText>
                                         <CardText>Last Updated: { coin.last_updated } </CardText>
-                                        <CardText>Total Supply: { coin.total_supply } </CardText>
                                         <img src={ coin.logo } width='300px' height='auto' />
                                     </Card>
                                 </Col>
