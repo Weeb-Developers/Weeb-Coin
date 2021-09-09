@@ -19,6 +19,7 @@ class App extends Component {
     this.state = {
       coins: [],
       portfolios: [],
+      total_worth: []
     };
   }
   componentDidMount() {
@@ -52,6 +53,16 @@ class App extends Component {
         console.log("index errors:", errors);
       });
   };
+
+  totalWorth = () => {
+    let worth = []
+    console.log("testing", this.state.portfolios)
+    worth = this.state.portfolios.map((portfolio) => {
+      return portfolio.coin.price * portfolio.current_quantitiy
+    })
+    console.log("worth", worth)
+    this.setState({total_worth: worth})
+  }
 
   render() {
     const {
@@ -103,8 +114,9 @@ class App extends Component {
                 <Portfolio
                   logged_in={logged_in}
                   current_user={current_user}
-                  // coins={this.state.coins.map(coin => coin.id)}
                   portfolios={this.state.portfolios}
+                  total_worth={this.state.total_worth}
+                  // totalWorth={this.totalWorth()}
                 />
               );
             }}

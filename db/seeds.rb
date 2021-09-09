@@ -63,6 +63,6 @@ coins.each do |attribute|
 end
 
 
-Portfolio.create user_id: User.first.id, coin_id: Coin.first.id, initial_quantity: 0, current_quantitiy: 0
-Portfolio.create user_id: User.first.id, coin_id: Coin.second.id, initial_quantity: 0, current_quantitiy: 0
+Portfolio.create user_id: User.first.id, coin_id: Coin.first.id, initial_quantity: 0, current_quantitiy: 2.3
+Portfolio.create user_id: User.first.id, coin_id: Coin.second.id, initial_quantity: 0, current_quantitiy: 2.5
 
