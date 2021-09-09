@@ -10,8 +10,8 @@ class Portfolio extends Component {
         </h1>
         <div>
           Current Crypto Curriences
-          {this.props.portfolio &&
-            this.props.coins.map((coin) => {
+          {this.props.coins &&
+            this.props.coins.map((coin) =>{
               return (
                 <Row key={coin.id}>
                   <Col sm="6">

@@ -18,7 +18,7 @@ class App extends Component {
     super();
     this.state = {
       coins: [],
-      portfolio: [],
+      portfolios: [],
     };
   }
   componentDidMount() {
@@ -46,7 +46,7 @@ class App extends Component {
       })
       .then((payload) => {
         // set the state with the data from the backend into the empty array
-        this.setState({ portfolio: payload });
+        this.setState({ portfolios: payload });
       })
       .catch((errors) => {
         console.log("index errors:", errors);
@@ -97,15 +97,13 @@ class App extends Component {
           <Route
             path="/portfolio"
             render={(props) => {
-              this.state.portfolio.filter(
-                (a) => a.user_id === this.props.current_user.id
-              );
               return (
                 <Portfolio
                   logged_in={logged_in}
                   current_user={current_user}
-                  coins={this.state.coins}
-                  portfolio={this.state.portfolio}
+                  coins={this.state.coins.filter((coin) => coin.id === this.state.portfolios.coin_id)}
+                  portfolios={this.state.portfolios.filter(
+                      (portfolio) => portfolio.user_id === current_user.id)}
                 />
               );
             }}
@@ -113,7 +111,6 @@ class App extends Component {
           <Route component={NotFound} />
         </Switch>
         <Footer logged_in={logged_in} />
-        {console.log(this.state.portfolio && this.state.portfolio)}
       </Router>
     );
   }
