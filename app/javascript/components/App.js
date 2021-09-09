@@ -61,7 +61,9 @@ class App extends Component {
       sign_in_route,
       sign_out_route,
     } = this.props;
-
+    console.log("this is coins ", this.state.coins)
+    console.log("this is portfolio ",this.state.portfolios)
+  
     return (
       <Router>
         <Header
@@ -101,9 +103,8 @@ class App extends Component {
                 <Portfolio
                   logged_in={logged_in}
                   current_user={current_user}
-                  coins={this.state.coins.filter((coin) => coin.id === this.state.portfolios.coin_id)}
-                  portfolios={this.state.portfolios.filter(
-                      (portfolio) => portfolio.user_id === current_user.id)}
+                  // coins={this.state.coins.map(coin => coin.id)}
+                  portfolios={this.state.portfolios}
                 />
               );
             }}

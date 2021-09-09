@@ -1,6 +1,7 @@
 class PortfoliosController < ApplicationController
+    before_action :authenticate_user!
     def index
-        portfolios = Portfolio.all
-        render json: portfolios
+        portfolios = current_user.portfolios
+        render json: portfolios.as_json(include: [:coin, :user])
     end
 end
