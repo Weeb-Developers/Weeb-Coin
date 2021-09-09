@@ -46,7 +46,7 @@ class App extends Component {
       sign_in_route,
       sign_out_route
     } = this.props
-    console.log(this.state.coins)
+    
     return (
       <Router>
         <Header
@@ -55,8 +55,10 @@ class App extends Component {
           sign_out_route={sign_out_route}
         />
         <Switch>
-          <Route path='/' render={ (props) => {
-            <Home coins={ this.state.coins } />}}/>
+          {/* <Route exact path='/' component={ <Home />}/> */}
+
+          <Route exact path='/' render={ (props) => 
+            <Home logged_in={logged_in} current_user={current_user} coins={ this.state.coins } />}/>
 
           <Route path='/aboutus' component={ AboutUs }/>
           <Route path='/coin' component={ Coin }/>
