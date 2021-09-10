@@ -1,8 +1,72 @@
 @import 'bootstrap';
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* -- Body -- */
+
+body {
+  background-color: #929492;
+  color: #1AFF00;
+}
+
+/* -- Home -- */
+
+.home-page {
+  display: flex;
+  justify-content: center;
+}
+
+.home-page .row {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.home-page-div {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.home-page .col-sm-6 {
+  min-width: 900px;
+}
+
+.home-page .card-body {
+  border: #1AFF00 solid 5px;
+  background-color: #C4C4C4;
+  max-height: 200px;
+}
+
+.home-page .card {
+  flex-direction: row;
+  align-items: center;
+  border-radius: 30px;
+  filter: drop-shadow(11px 7px 10px black);
+}
+
+.home-page a {
+  color: black;
+  text-decoration: none;
+}
+
+.home-page p {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.home-page h1 {
+  margin-top: 15px;
+}
+
+/* -- Header -- */
 header {
   display: flex;
   justify-content: space-between;
+  background-color: #626669;
+  filter: drop-shadow(6px 7px 10px black);
 }
 .nav-bar {
   display: flex;
@@ -13,7 +77,27 @@ header {
 }
 .nav-link {
   margin: 10px;
+  color: #1AFF00;
 }
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link:active {
+  color: #1AFF00;
+  text-decoration: underline;
+}
+
+.nav-link:visited {
+  color: #1AFF00;
+}
+
+.nav-link:visited:hover {
+  color: white;
+}
+
+/* -- Footer -- */
 
 footer {
   font-size: 20px;
@@ -25,7 +109,16 @@ footer {
   width: 100%;
   align-content: center;
   justify-content: center;
-  background-color: #738a99;
+  background-color: #626669;
   margin-top: auto;
+}
 
+footer a {
+  color: #1AFF00;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: white;
+  text-decoration: none;
 }
