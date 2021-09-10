@@ -20,7 +20,7 @@ class Portfolio extends Component {
     let newOpenState = !this.state.isOpen
     this.setState({isOpen: newOpenState})};
 
-  handleClick = () =>
+  handleClick = () => {this.state.submitted && <Redirect to='/apartmentindex'/>}
 
   render() {
     console.log("coins", this.props.coins)
