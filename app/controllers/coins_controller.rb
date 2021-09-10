@@ -3,4 +3,5 @@ class CoinsController < ApplicationController
         coins = Coin.all
         render json: coins
     end
+
 end
