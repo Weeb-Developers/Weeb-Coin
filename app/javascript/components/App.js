@@ -64,7 +64,7 @@ class App extends Component {
     } = this.props;
     console.log("this is coins ", this.state.coins)
     console.log("this is portfolio ",this.state.portfolios)
-  
+
     return (
       <Router>
         <Header
@@ -96,6 +96,7 @@ class App extends Component {
           />
 
           <Route path="/cryptoinfo" component={CryptoInfo} />
+          <Route path="/newportfolio" component={NewPortfolio} />
           <Route
             path="/portfolio"
             render={(props) => {
@@ -104,11 +105,12 @@ class App extends Component {
                   logged_in={logged_in}
                   current_user={current_user}
                   portfolios={this.state.portfolios}
+                  coins={this.state.coins}
                 />
               );
             }}
           />
-          
+
           <Route component={NotFound} />
         </Switch>
         <Footer logged_in={logged_in} />

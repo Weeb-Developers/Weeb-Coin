@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Card, Row, Col, CardText, CardTitle } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Card, Row, Col, CardText, CardTitle, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import { Link, Redirect } from "react-router-dom";
 class Portfolio extends Component {
   constructor(){
     super();
     this.state = {
-        
+      isOpen: false
     }
   }
   getTotalWorth = () => {
@@ -15,13 +15,30 @@ class Portfolio extends Component {
     })
     return sum
   }
+
+  toggle = () => {
+    let newOpenState = !this.state.isOpen
+    this.setState({isOpen: newOpenState})};
+
+  handleClick = () =>
+
   render() {
+    console.log("coins", this.props.coins)
     return (
       <>
         <h1>
           Hello {this.props.logged_in && this.props.current_user.username}
         </h1>
         <h3>Total Worth: {this.getTotalWorth()}</h3>
+        <Dropdown isOpen={this.state.isOpen} toggle={this.toggle}>
+          <DropdownToggle caret>
+            Add Coins:
+          </DropdownToggle>
+          <DropdownMenu>
+            {this.props.coins && this.props.coins.map((coin) => {
+            return <DropdownItem onClick={this.handleClick}>{coin.name}</DropdownItem>})}
+          </DropdownMenu>
+        </Dropdown>
         <div>
           Current Crypto Curriences
           {this.props.portfolios.map((portfolio) =>{
