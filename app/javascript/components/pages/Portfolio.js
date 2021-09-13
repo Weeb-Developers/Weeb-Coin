@@ -22,18 +22,19 @@ class Portfolio extends Component {
     })
     return sum
   }
-  getCoinId = () => {
-    let id = this.props.match.params.id;
-    this.state.form.coin_id = this.props.coins.find((coin) => coin.id === +id);
-  }
+  // getCoinId = () => {
+  //   let id = this.props.match.params.id;
+  //   this.state.form.coin_id = this.props.coins.find((coin) => coin.id === +id);
+  // }
   toggle = () => {
     let newOpenState = !this.state.isOpen
     this.setState({isOpen: newOpenState})};
 
-  toggleModal = () => {
+  toggleModal = (id) => {
+    console.log(id)
     let newOpenModal = !this.state.modal
-    this.getCoinId()
     this.setState({modal: newOpenModal})
+    this.setState({...this.state.form, coin_id: id})
   }
   handleChange = (e) => {
     let { form } = this.state
@@ -63,7 +64,7 @@ class Portfolio extends Component {
           <DropdownMenu>
             {this.props.coins && this.props.coins.map((coin) => {
               
-            return <DropdownItem onClick={this.toggleModal}>{coin.name}</DropdownItem>})}
+            return <DropdownItem onClick={() => this.toggleModal(coin.id)}>{coin.name}</DropdownItem>})}
           </DropdownMenu>
         </Dropdown>
 
