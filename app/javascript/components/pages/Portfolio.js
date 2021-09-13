@@ -18,7 +18,7 @@ class Portfolio extends Component {
   getTotalWorth = () => {
     let sum = 0
     this.props.portfolios.forEach(portfolio => {
-      sum += portfolio.coin.price * portfolio.current_quantitiy
+      sum += portfolio.coin.price * portfolio.current_quantitiy;
     })
     return sum
   }
@@ -44,7 +44,7 @@ class Portfolio extends Component {
 
   render() {
     console.log("coin", this.props.coins)
-    console.log("portfolio coins", this.props.portfolio.coin.id)
+    console.log("portfolio coins", this.props.portfolios)
     return (
       <>
         <h1>
@@ -92,6 +92,7 @@ class Portfolio extends Component {
                         <CardText>Holdings: {portfolio.current_quantitiy} </CardText>
                         <CardText>Amount: ${portfolio.coin.price * portfolio.current_quantitiy} </CardText>
                         <img src={portfolio.coin.logo} width="300px" height="auto" />
+                        <Button onClick=''>Add/Remove coins</Button>
                       </Card>
                     </Link>
                   </Col>
