@@ -12,7 +12,6 @@ import AboutUs from "./pages/AboutUs.js";
 import CryptoInfo from "./pages/CryptoInfo.js";
 import Portfolio from "./pages/Portfolio.js";
 import NotFound from "./pages/NotFound";
-import NewPortfolio from "./pages/NewPortfolio.js";
 
 class App extends Component {
   constructor() {
@@ -107,7 +106,6 @@ class App extends Component {
           />
 
           <Route path="/cryptoinfo" component={CryptoInfo} />
-          <Route path="/newportfolio" component={NewPortfolio} />
           <Route
             path="/portfolio"
             render={(props) => {

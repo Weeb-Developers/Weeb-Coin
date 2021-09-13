@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Card, Row, Col, CardText, CardTitle, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Label} from "reactstrap";
-// import { Modal, Button } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
+
 class Portfolio extends Component {
   constructor(){
     super();
@@ -22,7 +22,7 @@ class Portfolio extends Component {
     })
     return sum
   }
-  
+
   toggle = () => {
     let newOpenState = !this.state.isOpen
     this.setState({isOpen: newOpenState})};
@@ -43,10 +43,10 @@ class Portfolio extends Component {
 }
 
   render() {
-    console.log("coins", this.props.coins)
+    console.log("coin", this.props.coins)
+    console.log("portfolio coins", this.props.portfolio.coin.id)
     return (
       <>
-
         <h1>
           Hello {this.props.logged_in && this.props.current_user.username}
         </h1>
@@ -98,7 +98,6 @@ class Portfolio extends Component {
                 </Row>
               );
             })}
-          {console.log(this.props.portfolios && this.props.portfolios)}
         </div>
       </>
     );
