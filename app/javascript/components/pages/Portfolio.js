@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Row, Col, CardText, CardTitle, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, Modal, ModalHeader, ModalBody, ModalFooter} from "reactstrap";
+import { Card, Row, Col, CardText, CardTitle, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Label} from "reactstrap";
 // import { Modal, Button } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
 class Portfolio extends Component {
@@ -8,6 +8,11 @@ class Portfolio extends Component {
     this.state = {
       isOpen: false,
       modal: false,
+      form: {
+        coin_id: '',
+        current_quantitiy: '',
+        initial_quantity: 0,
+      }
     }
   }
   getTotalWorth = () => {
@@ -17,33 +22,38 @@ class Portfolio extends Component {
     })
     return sum
   }
-
+  getCoinId = () => {
+    let id = this.props.match.params.id;
+    this.state.form.coin_id = this.props.coins.find((coin) => coin.id === +id);
+  }
   toggle = () => {
     let newOpenState = !this.state.isOpen
     this.setState({isOpen: newOpenState})};
 
-  // handleClose = () => {
-  //   this.setState({show: false})
-  // }
-
-  // handleShow = () => {
-  //   this.setState({show: !this.state.show})
-  // }
-
   toggleModal = () => {
     let newOpenModal = !this.state.modal
+    this.getCoinId()
     this.setState({modal: newOpenModal})
   }
-
-
-  // handleClick = () => {this.state.submitted && <Redirect to='/apartmentindex'/>}
+  handleChange = (e) => {
+    let { form } = this.state
+    form[e.target.name] = e.target.value
+    this.setState({ form: form })
+  }
+  handleSubmit = () => {
+    this.props.createNewPortfolio(this.state.form)
+    let newOpenModal = !this.state.modal
+    this.setState({modal: newOpenModal})
+    window.location.reload()
+}
 
   render() {
     console.log("coins", this.props.coins)
     return (
       <>
+      
         <h1>
-          Hello {this.props.logged_in && this.props.current_user.username}
+          Hello {this.props.logged_in && this.props.current_user.username} 
         </h1>
         <h3>Total Worth: {this.getTotalWorth()}</h3>
         <Dropdown isOpen={this.state.isOpen} toggle={this.toggle}>
@@ -52,18 +62,24 @@ class Portfolio extends Component {
           </DropdownToggle>
           <DropdownMenu>
             {this.props.coins && this.props.coins.map((coin) => {
-            return <DropdownItem onClick={this.toggleModal()}>{coin.name}</DropdownItem>})}
+              
+            return <DropdownItem onClick={this.toggleModal}>{coin.name}</DropdownItem>})}
           </DropdownMenu>
         </Dropdown>
 
-        <Modal isOpen={this.state.modal} toggle={this.toggleModal()}>
-          <ModalHeader toggle={this.toggleModal()}>Modal title</ModalHeader>
+        <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
+          <ModalHeader toggle={this.toggleModal}>Adding Value</ModalHeader>
           <ModalBody>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <Form>
+              <FormGroup>
+                <Label for="current_quantitiy">Quantity</Label>
+                <Input type="number" name="current_quantitiy" placeholder='0' onChange={this.handleChange} value={ this.state.form.current_quantitiy } />
+              </FormGroup>
+            </Form>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggleModal()}>Do Something</Button>{' '}
-            <Button color="secondary" onClick={this.toggleModal()}>Cancel</Button>
+            <Button color="primary" onClick={this.handleSubmit}>Submit</Button>{' '}
+            <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
           </ModalFooter>
         </Modal>
 
@@ -87,7 +103,7 @@ class Portfolio extends Component {
                 </Row>
               );
             })}
-          {console.log(this.props.portfolio && this.props.portfolio)}
+          {console.log(this.props.portfolios && this.props.portfolios)}
         </div>
       </>
     );

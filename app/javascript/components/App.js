@@ -55,16 +55,26 @@ class App extends Component {
       });
   };
 
+  createNewPortfolio = (newPortfolio) => {
+    fetch('/portfolios', {
+      body: JSON.stringify(newPortfolio),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: "POST"
+    })
+    .then(response => {
+      if(response.status === 422){
+        alert("Something is wrong with your submission.")
+      }
+      return response.json()
+    })
+    .then(() => this.getPortfolio())
+    .catch(errors => console.log('Create errors:', errors))
+  }
+
   render() {
-    const {
-      logged_in,
-      current_user,
-      new_user_route,
-      sign_in_route,
-      sign_out_route,
-    } = this.props;
-    console.log("this is coins ", this.state.coins)
-    console.log("this is portfolio ",this.state.portfolios)
+    const {logged_in, current_user, new_user_route, sign_in_route, sign_out_route } = this.props;
 
     return (
       <Router>
@@ -107,6 +117,7 @@ class App extends Component {
                   current_user={current_user}
                   portfolios={this.state.portfolios}
                   coins={this.state.coins}
+                  createNewPortfolio={this.createNewPortfolio}
                 />
               );
             }}
