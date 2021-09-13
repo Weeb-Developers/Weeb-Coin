@@ -55,25 +55,48 @@ class App extends Component {
   };
 
   createNewPortfolio = (newPortfolio) => {
-    fetch('/portfolios', {
+    fetch("/portfolios", {
       body: JSON.stringify(newPortfolio),
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      method: "POST"
+      method: "POST",
     })
-    .then(response => {
-      if(response.status === 422){
-        alert("Something is wrong with your submission.")
-      }
-      return response.json()
+      .then((response) => {
+        if (response.status === 422) {
+          alert("Something is wrong with your submission.");
+        }
+        return response.json();
+      })
+      .then(() => this.getPortfolio())
+      .catch((errors) => console.log("Create errors:", errors));
+  };
+  updatePortfolio = (updatePortfolio, id) => {
+    fetch(`/portfolios/${id}`, {
+      body: JSON.stringify(updatePortfolio),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "PATCH",
     })
-    .then(() => this.getPortfolio())
-    .catch(errors => console.log('Create errors:', errors))
-  }
+      .then((response) => {
+        if (response.status === 422) {
+          alert("There is something wrong with your submission.");
+        }
+        return response.json();
+      })
+      .then(() => this.getPortfolio())
+      .catch((errors) => console.log("edit errors:", errors));
+  };
 
   render() {
-    const {logged_in, current_user, new_user_route, sign_in_route, sign_out_route } = this.props;
+    const {
+      logged_in,
+      current_user,
+      new_user_route,
+      sign_in_route,
+      sign_out_route,
+    } = this.props;
 
     return (
       <Router>
@@ -116,6 +139,7 @@ class App extends Component {
                   portfolios={this.state.portfolios}
                   coins={this.state.coins}
                   createNewPortfolio={this.createNewPortfolio}
+                  updatePortfolio={this.updatePortfolio}
                 />
               );
             }}

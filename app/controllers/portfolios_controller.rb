@@ -14,6 +14,18 @@ class PortfoliosController < ApplicationController
         end
     end
 
+    def update
+        portfolio = Portfolio.find(params[:id])
+        portfolio = current_user.portfolios.update(portfolio_params)
+        if portfolio.valid?
+            render json: portfolio
+        else
+            render json: portfolio.errors, status: 422
+        end
+    end
+
+
+
     private
     def portfolio_params
         params.require(:portfolio).permit(:current_quantitiy, :initial_quantity, :coin_id)
