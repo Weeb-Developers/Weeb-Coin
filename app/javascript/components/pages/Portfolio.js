@@ -32,9 +32,12 @@ class Portfolio extends Component {
 
   toggleModal = (id) => {
     console.log(id)
+   
     let newOpenModal = !this.state.modal
     this.setState({modal: newOpenModal})
-    this.setState({...this.state.form, coin_id: id})
+    //this.setState({...this.state.form, coin_id: id})
+    this.state.form.coin_id = id
+    console.log('coin id: ', this.state.form.coin_id)
   }
   handleChange = (e) => {
     let { form } = this.state
