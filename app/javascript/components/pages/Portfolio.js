@@ -22,22 +22,14 @@ class Portfolio extends Component {
     })
     return sum
   }
-  // getCoinId = () => {
-  //   let id = this.props.match.params.id;
-  //   this.state.form.coin_id = this.props.coins.find((coin) => coin.id === +id);
-  // }
+  
   toggle = () => {
     let newOpenState = !this.state.isOpen
     this.setState({isOpen: newOpenState})};
 
   toggleModal = (id) => {
-    console.log(id)
-   
     let newOpenModal = !this.state.modal
-    this.setState({modal: newOpenModal})
-    //this.setState({...this.state.form, coin_id: id})
-    this.state.form.coin_id = id
-    console.log('coin id: ', this.state.form.coin_id)
+    this.setState({modal: newOpenModal, form: {...this.state.form, coin_id: id}})
   }
   handleChange = (e) => {
     let { form } = this.state
@@ -48,16 +40,15 @@ class Portfolio extends Component {
     this.props.createNewPortfolio(this.state.form)
     let newOpenModal = !this.state.modal
     this.setState({modal: newOpenModal})
-    window.location.reload()
 }
 
   render() {
     console.log("coins", this.props.coins)
     return (
       <>
-      
+
         <h1>
-          Hello {this.props.logged_in && this.props.current_user.username} 
+          Hello {this.props.logged_in && this.props.current_user.username}
         </h1>
         <h3>Total Worth: {this.getTotalWorth()}</h3>
         <Dropdown isOpen={this.state.isOpen} toggle={this.toggle}>
@@ -66,7 +57,7 @@ class Portfolio extends Component {
           </DropdownToggle>
           <DropdownMenu>
             {this.props.coins && this.props.coins.map((coin) => {
-              
+
             return <DropdownItem onClick={() => this.toggleModal(coin.id)}>{coin.name}</DropdownItem>})}
           </DropdownMenu>
         </Dropdown>
