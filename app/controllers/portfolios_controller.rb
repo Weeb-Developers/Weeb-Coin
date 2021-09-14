@@ -19,6 +19,17 @@ class PortfoliosController < ApplicationController
         render json: portfolio
     end
 
+    def destroy
+        portfolio = current_user.portfolios.find(params[:id])
+        portfolio.destroy
+        # render json: portfolio
+
+        if portfolio.valid?
+            render json: portfolio
+        else
+            render json: portfolio.errors, status: 422
+        end
+    end
 
 
     private

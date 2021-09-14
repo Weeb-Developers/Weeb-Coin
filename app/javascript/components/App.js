@@ -88,6 +88,17 @@ class App extends Component {
       .then(() => this.getPortfolio())
       .catch((errors) => console.log("edit errors:", errors));
   };
+  deletePortfolio = (id) => {
+    fetch(`/portfolios/${id}`, {
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => response.json())
+    .then(payload => this.getPortfolio())
+    .catch(errors => console.log("Portfolio delete errors:", errors))
+  }
 
   render() {
     const {
@@ -140,6 +151,7 @@ class App extends Component {
                   coins={this.state.coins}
                   createNewPortfolio={this.createNewPortfolio}
                   updatePortfolio={this.updatePortfolio}
+                  deletePortfolio={this.deletePortfolio}
                 />
               );
             }}
