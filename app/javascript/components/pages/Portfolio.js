@@ -140,6 +140,7 @@ class Portfolio extends Component {
                   changing Value
                 </ModalHeader>
                 <ModalBody>
+                  Current holdings: {portfolio.current_quantitiy}
                   <Form>
                     <FormGroup>
                       <Label for="current_quantitiy">Quantity</Label>
