@@ -78,7 +78,7 @@ class Portfolio extends Component {
     this.props.updatePortfolio(this.state.form, portfolio_id);
     let updateModal = !this.state.addRemoveModal;
     this.setState({ addRemoveModal: updateModal });
-    location.reload();
+    location.reload(); //refreshes for current portfolio view after update
   };
   render() {
     console.log("coin", this.props.coins);
