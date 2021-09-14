@@ -26,6 +26,25 @@ class App extends Component {
     this.getPortfolio();
   }
 
+  // getAPI = () => {
+  //   fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest' {
+  //
+  //   })
+  //     .then(response => console.log('api data', response)
+  // }
+  // fetch('api/Sessions', {
+  //       method: 'POST',
+  //       headers: {
+  //           'X-API-KEY': 'apikey',
+  //           'Accept': 'application/json',
+  //           'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify(callData)
+  //   })
+  //   .then(response => response.text())
+  //   .then((response) => updateResponse(response))
+  //   .catch(error => console.error(error));
+
   getCoins = () => {
     fetch("/coins")
       .then((response) => {
@@ -108,6 +127,8 @@ class App extends Component {
       sign_in_route,
       sign_out_route,
     } = this.props;
+    const API_KEY = `${process.env.REACT_APP_KEY}`
+    console.log('key', API_KEY)
 
     return (
       <Router>
