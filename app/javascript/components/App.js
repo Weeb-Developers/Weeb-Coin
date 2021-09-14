@@ -24,22 +24,22 @@ class App extends Component {
   componentDidMount() {
     this.getCoins();
     this.getPortfolio();
-    this.getAPI();
+    //this.getAPI();
   }
 
-  getAPI = () => {
-    fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
-        method: 'GET',
-        mode: 'cors',
-        headers: {
-          'X-CMC_PRO_API_KEY': process.env.REACT_APP_API_KEY,
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-    })
-    .then(response => console.log('api data', response))
-    .catch(error => console.error(error));
-  }
+  // getAPI = () => {
+  //   fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
+  //       method: 'GET',
+  //       mode: 'no-cors',
+  //       headers: {
+  //         'X-CMC_PRO_API_KEY': process.env.REACT_APP_API_KEY,
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/json'
+  //       },
+  //   })
+  //   .then(response => console.log('api data', response))
+  //   .catch(error => console.error(error));
+  // }
   // fetch('api/Sessions', {
   //       method: 'POST',
   //       headers: {
