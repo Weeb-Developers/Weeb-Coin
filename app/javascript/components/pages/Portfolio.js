@@ -78,6 +78,7 @@ class Portfolio extends Component {
     this.props.updatePortfolio(this.state.form, portfolio_id);
     let updateModal = !this.state.addRemoveModal;
     this.setState({ addRemoveModal: updateModal });
+    location.reload();
   };
   render() {
     console.log("coin", this.props.coins);
@@ -128,43 +129,44 @@ class Portfolio extends Component {
           </ModalFooter>
         </Modal>
         {/*update modal  */}
-        <Modal
-          isOpen={this.state.addRemoveModal}
-          toggle={this.toggleUpdateModal}
-        >
-          <ModalHeader toggle={this.toggleUpdateModal}>
-            changing Value
-          </ModalHeader>
-          <ModalBody>
-            <Form>
-              <FormGroup>
-                <Label for="current_quantitiy">Quantity</Label>
-                <Input
-                  type="number"
-                  name="current_quantitiy"
-                  onChange={this.handleChange}
-                  value={this.state.form.current_quantitiy}
-                />
-              </FormGroup>
-            </Form>
-          </ModalBody>
-          <ModalFooter>
-            {this.props.portfolios &&
-              this.props.portfolios.map((portfolio) => {
-                return (
+        {this.props.portfolios &&
+          this.props.portfolios.map((portfolio) => {
+            return (
+              <Modal
+                isOpen={this.state.addRemoveModal}
+                toggle={this.toggleUpdateModal}
+              >
+                <ModalHeader toggle={this.toggleUpdateModal}>
+                  changing Value
+                </ModalHeader>
+                <ModalBody>
+                  <Form>
+                    <FormGroup>
+                      <Label for="current_quantitiy">Quantity</Label>
+                      <Input
+                        type="number"
+                        name="current_quantitiy"
+                        onChange={this.handleChange}
+                        value={this.state.form.current_quantitiy}
+                      />
+                    </FormGroup>
+                  </Form>
+                </ModalBody>
+                <ModalFooter>
                   <Button
                     color="primary"
                     onClick={() => this.handleUpdateSubmit(portfolio.id)}
                   >
                     Submit
                   </Button>
-                );
-              })}
-            <Button color="secondary" onClick={this.toggleUpdateModal}>
-              Cancel
-            </Button>
-          </ModalFooter>
-        </Modal>
+
+                  <Button color="secondary" onClick={this.toggleUpdateModal}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Modal>
+            );
+          })}
 
         <div>
           Current Crypto Curriences
