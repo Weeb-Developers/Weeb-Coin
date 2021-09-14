@@ -33,6 +33,7 @@ class Portfolio extends Component {
         current_quantitiy: "",
         initial_quantity: 0,
       },
+      holding: "",
     };
   }
   getTotalWorth = () => {
@@ -66,11 +67,12 @@ class Portfolio extends Component {
     this.setState({ modal: newOpenModal });
   };
 
-  toggleUpdateModal = (id) => {
+  toggleUpdateModal = (id, holding) => {
     let updateModal = !this.state.addRemoveModal;
     this.setState({
       addRemoveModal: updateModal,
       form: { ...this.state.form, coin_id: id },
+      holding: holding,
     });
   };
 
@@ -78,8 +80,8 @@ class Portfolio extends Component {
     this.props.updatePortfolio(this.state.form, portfolio_id);
     let updateModal = !this.state.addRemoveModal;
     this.setState({ addRemoveModal: updateModal });
-    location.reload(); //refreshes for current portfolio view after update
   };
+
   render() {
     console.log("coin", this.props.coins);
     console.log("portfolio coins", this.props.portfolios);
@@ -140,7 +142,7 @@ class Portfolio extends Component {
                   changing Value
                 </ModalHeader>
                 <ModalBody>
-                  Current holdings: {portfolio.current_quantitiy}
+                  Current holdings: {this.state.holding}
                   <Form>
                     <FormGroup>
                       <Label for="current_quantitiy">Quantity</Label>
@@ -171,43 +173,50 @@ class Portfolio extends Component {
 
         <div>
           Current Crypto Curriences
-          {this.props.portfolios.map((portfolio) => {
-            return (
-              <Row key={portfolio.id}>
-                <Col sm="6">
-                  <Card body>
-                    <Link to={`/coin/${portfolio.coin.id}`}>
-                      <CardTitle tag="h5">
-                        Name: {portfolio.coin.name}{" "}
-                      </CardTitle>
-                    </Link>
-                    <CardText>Symbol: {portfolio.coin.symbol} </CardText>
-                    <CardText>Price: {portfolio.coin.price} </CardText>
-                    <CardText>
-                      Holdings: {portfolio.current_quantitiy}{" "}
-                    </CardText>
-                    <CardText>
-                      Amount: $
-                      {portfolio.coin.price * portfolio.current_quantitiy}{" "}
-                    </CardText>
-                    <Link to={`/coin/${portfolio.coin.id}`}>
-                      <img
-                        src={portfolio.coin.logo}
-                        width="300px"
-                        height="auto"
-                      />
-                    </Link>
-                    <Button
-                      onClick={() => this.toggleUpdateModal(portfolio.coin_id)}
-                    >
-                      Add/Remove coins
-                    </Button>
-                  </Card>
-                </Col>
-              </Row>
-            );
-          })}
-          aa{" "}
+          {this.props.portfolios &&
+            this.props.portfolios.map((portfolio) => {
+              return (
+                <>
+                  <Row key={portfolio.id}>
+                    <Col sm="6">
+                      <Card body>
+                        <Link to={`/coin/${portfolio.coin.id}`}>
+                          <CardTitle tag="h5">
+                            Name: {portfolio.coin.name}{" "}
+                          </CardTitle>
+                        </Link>
+                        <CardText>Symbol: {portfolio.coin.symbol} </CardText>
+                        <CardText>Price: {portfolio.coin.price} </CardText>
+                        <CardText>
+                          Holdings: {portfolio.current_quantitiy}
+                        </CardText>
+                        <CardText>
+                          Amount: $
+                          {portfolio.coin.price * portfolio.current_quantitiy}{" "}
+                        </CardText>
+                        <Link to={`/coin/${portfolio.coin.id}`}>
+                          <img
+                            src={portfolio.coin.logo}
+                            width="300px"
+                            height="auto"
+                          />
+                        </Link>
+                        <Button
+                          onClick={() =>
+                            this.toggleUpdateModal(
+                              portfolio.coin_id,
+                              portfolio.current_quantitiy
+                            )
+                          }
+                        >
+                          Add/Remove coins
+                        </Button>
+                      </Card>
+                    </Col>
+                  </Row>
+                </>
+              );
+            })}
         </div>
       </>
     );
