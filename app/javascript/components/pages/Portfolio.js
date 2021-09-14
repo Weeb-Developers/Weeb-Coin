@@ -209,7 +209,15 @@ class Portfolio extends Component {
                             )
                           }
                         >
-                          Add/Remove coins
+                          Add/Remove Coins
+                        </Button>
+                        <Button
+                          onClick={() =>
+                            this.props.deletePortfolio(portfolio.id)
+                            
+                          }
+                        >
+                          Delete Coin
                         </Button>
                       </Card>
                     </Col>
