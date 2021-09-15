@@ -22,36 +22,16 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    this.getCoins();
+    // this.getCoins();
     this.getPortfolio();
-    //this.getAPI();
+    this.getAPI();
   }
-
-  // getAPI = () => {
-  //   fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
-  //       method: 'GET',
-  //       mode: 'no-cors',
-  //       headers: {
-  //         'X-CMC_PRO_API_KEY': process.env.REACT_APP_API_KEY,
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json'
-  //       },
-  //   })
-  //   .then(response => console.log('api data', response))
-  //   .catch(error => console.error(error));
-  // }
-  // fetch('api/Sessions', {
-  //       method: 'POST',
-  //       headers: {
-  //           'X-API-KEY': 'apikey',
-  //           'Accept': 'application/json',
-  //           'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify(callData)
-  //   })
-  //   .then(response => response.text())
-  //   .then((response) => updateResponse(response))
-  //   .catch(error => console.error(error));
+  getAPI = () => {
+    fetch("/api-data")
+      .then(response => response.json())
+      .then(payload => this.setState({coins: (payload.data.filter((value,index) => index<15))}))
+      .catch(errors => console.log("index errors:", errors))
+    }
 
   getCoins = () => {
     fetch("/coins")
