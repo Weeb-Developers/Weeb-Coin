@@ -41,7 +41,7 @@ class Home extends Component {
                         <CardText>{coin.symbol} </CardText>
                         <img src={coin.logo} width="300px" height="auto" />
                         <CardText>{coin.name} </CardText>
-                        // <CardText>Price: ${coin.price} </CardText>
+                        <CardText>Price: ${coin.price} </CardText>
                         <CardText>
                           Last Updated:{" "}
                           {this.formatLastUpdated(coin.last_updated)}{" "}

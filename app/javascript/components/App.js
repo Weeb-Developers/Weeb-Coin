@@ -21,11 +21,13 @@ class App extends Component {
       portfolios: [],
     };
   }
+
   componentDidMount() {
+    this.getAPI();
     this.getCoins();
     this.getPortfolio();
-    this.getAPI();
   }
+
   getAPI = () => {
     fetch("/api-data")
     }
