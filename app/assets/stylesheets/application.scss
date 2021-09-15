@@ -122,3 +122,59 @@ footer a:hover {
   color: white;
   text-decoration: none;
 }
+
+/* -- About Us Page -- */
+.about-us-header {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.about-us-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 50px;
+  margin-top: 25px;
+}
+
+.about-us-container img{
+  display: block;
+  margin: auto;
+  margin-bottom: 0.8rem;
+  border-radius: 10%;
+  filter: drop-shadow(11px 7px 10px black);
+}
+
+.about-us-person {
+  min-width: 230px;
+  color: white;
+}
+
+.about-us-person h3 {
+  font-size: 1.6rem;
+}
+
+.about-us-person-info p {
+  margin-right: auto;
+  width: 230px;
+}
+
+@media only screen and (max-width: 960px) {
+  .about-us-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+    margin-top: 25px;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .about-us-person {
+    min-width: 230px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
