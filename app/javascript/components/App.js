@@ -22,15 +22,12 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    // this.getCoins();
+    this.getCoins();
     this.getPortfolio();
     this.getAPI();
   }
   getAPI = () => {
     fetch("/api-data")
-      .then(response => response.json())
-      .then(payload => this.setState({coins: (payload.data.filter((value,index) => index<15))}))
-      .catch(errors => console.log("index errors:", errors))
     }
 
   getCoins = () => {
