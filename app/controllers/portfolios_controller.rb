@@ -33,6 +33,6 @@ class PortfoliosController < ApplicationController
 
     private
     def portfolio_params
-        params.require(:portfolio).permit(:current_quantitiy, :initial_quantity, :coin_id, :user_id)
+        params.require(:portfolio).permit(:current_quantity, :initial_quantity, :coin_id, :user_id)
       end
 end

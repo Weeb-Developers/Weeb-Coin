@@ -30,7 +30,7 @@ class Portfolio extends Component {
       addRemoveModal: false,
       form: {
         coin_id: "",
-        current_quantitiy: "",
+        current_quantity: "",
         initial_quantity: 0,
       },
       holding: "",
@@ -39,7 +39,7 @@ class Portfolio extends Component {
   getTotalWorth = () => {
     let sum = 0;
     this.props.portfolios.forEach((portfolio) => {
-      sum += portfolio.coin.price * portfolio.current_quantitiy;
+      sum += portfolio.coin.price * portfolio.current_quantity;
     });
     return sum;
   };
@@ -110,13 +110,13 @@ class Portfolio extends Component {
           <ModalBody>
             <Form>
               <FormGroup>
-                <Label for="current_quantitiy">Quantity</Label>
+                <Label for="current_quantity">Quantity</Label>
                 <Input
                   type="number"
-                  name="current_quantitiy"
+                  name="current_quantity"
                   placeholder="0"
                   onChange={this.handleChange}
-                  value={this.state.form.current_quantitiy}
+                  value={this.state.form.current_quantity}
                 />
               </FormGroup>
             </Form>
@@ -145,12 +145,12 @@ class Portfolio extends Component {
                   Current holdings: {this.state.holding}
                   <Form>
                     <FormGroup>
-                      <Label for="current_quantitiy">Quantity</Label>
+                      <Label for="current_quantity">Quantity</Label>
                       <Input
                         type="number"
-                        name="current_quantitiy"
+                        name="current_quantity"
                         onChange={this.handleChange}
-                        value={this.state.form.current_quantitiy}
+                        value={this.state.form.current_quantity}
                       />
                     </FormGroup>
                   </Form>
@@ -188,24 +188,21 @@ class Portfolio extends Component {
                         <CardText>Symbol: {portfolio.coin.symbol} </CardText>
                         <CardText>Price: {portfolio.coin.price} </CardText>
                         <CardText>
-                          Holdings: {portfolio.current_quantitiy}
+                          Holdings: {portfolio.current_quantity}
                         </CardText>
                         <CardText>
                           Amount: $
-                          {portfolio.coin.price * portfolio.current_quantitiy}{" "}
+                          {portfolio.coin.price * portfolio.current_quantity}{" "}
                         </CardText>
                         <Link to={`/coin/${portfolio.coin.id}`}>
-                          <img
-                            src={portfolio.coin.logo}
-                            width="300px"
-                            height="auto"
-                          />
+                          <img src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${portfolio.coin.api_id}.png`}
+                            height='64px' width='64px'/>
                         </Link>
                         <Button
                           onClick={() =>
                             this.toggleUpdateModal(
                               portfolio.coin_id,
-                              portfolio.current_quantitiy
+                              portfolio.current_quantity
                             )
                           }
                         >
@@ -214,7 +211,7 @@ class Portfolio extends Component {
                         <Button
                           onClick={() =>
                             this.props.deletePortfolio(portfolio.id)
-                            
+
                           }
                         >
                           Delete Coin
