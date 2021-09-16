@@ -21,10 +21,25 @@ class App extends Component {
       portfolios: [],
     };
   }
+
   componentDidMount() {
+    this.getAPI();
     this.getCoins();
     this.getPortfolio();
+    this.refreshApi();
   }
+  refreshApi() {
+    const reloadCount = sessionStorage.getItem("reloadCount");
+    if (reloadCount < 1) {
+      sessionStorage.setItem("reloadCount", String(reloadCount + 1));
+      window.location.reload();
+    } else {
+      sessionStorage.removeItem("reloadCount");
+    }
+  }
+  getAPI = () => {
+    fetch("/api-data");
+  };
 
   getCoins = () => {
     fetch("/coins")
@@ -91,14 +106,14 @@ class App extends Component {
   deletePortfolio = (id) => {
     fetch(`/portfolios/${id}`, {
       headers: {
-        "Content-Type" : "application/json"
+        "Content-Type": "application/json",
       },
-      method: "DELETE"
+      method: "DELETE",
     })
-    .then(response => response.json())
-    .then(payload => this.getPortfolio())
-    .catch(errors => console.log("Portfolio delete errors:", errors))
-  }
+      .then((response) => response.json())
+      .then((payload) => this.getPortfolio())
+      .catch((errors) => console.log("Portfolio delete errors:", errors));
+  };
 
   render() {
     const {
@@ -108,6 +123,9 @@ class App extends Component {
       sign_in_route,
       sign_out_route,
     } = this.props;
+
+    const API_KEY = process.env.REACT_APP_API_KEY;
+    console.log("key", API_KEY);
 
     return (
       <Router>

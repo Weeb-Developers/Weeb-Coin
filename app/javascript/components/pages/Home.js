@@ -8,12 +8,21 @@ class Home extends Component {
   }
 
   formatLastUpdated = (updateTime) => {
-    
-    let current_datetime = new Date(updateTime)
-    let formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds() 
-    return formatted_date
-  }
-
+    let current_datetime = new Date(updateTime);
+    let formatted_date =
+      current_datetime.getFullYear() +
+      "-" +
+      (current_datetime.getMonth() + 1) +
+      "-" +
+      current_datetime.getDate() +
+      " " +
+      current_datetime.getHours() +
+      ":" +
+      current_datetime.getMinutes() +
+      ":" +
+      current_datetime.getSeconds();
+    return formatted_date;
+  };
   render() {
     return (
       <section className="home-page">
@@ -30,16 +39,21 @@ class Home extends Component {
                     <Link to={`/coin/${coin.id}`}>
                       <Card body>
                         <CardText>{coin.symbol} </CardText>
-                        <img src={coin.logo} width="300px" height="auto" />
+                        <img src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.api_id}.png`}
+                          height='64px' width='64px'/>
                         <CardText>{coin.name} </CardText>
                         <CardText>Price: ${coin.price} </CardText>
-                        <CardText>Last Updated: {this.formatLastUpdated(coin.last_updated)} </CardText>
+                        <CardText>
+                          Last Updated:{" "}
+                          {this.formatLastUpdated(coin.last_updated)}{" "}
+                        </CardText>
                       </Card>
                     </Link>
                   </Col>
                 </Row>
               );
             })}
+          {console.log("apicoins", this.props.coins)}
         </div>
       </section>
     );

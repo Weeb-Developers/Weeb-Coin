@@ -7,12 +7,12 @@ class Coin extends Component {
   }
 
   formatLastUpdated = (updateTime) => {
-    
+
     let current_datetime = new Date(updateTime)
-    let formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds() 
+    let formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds()
     return formatted_date
   }
-  
+
   render() {
     const { coin } = this.props;
     return (
@@ -28,7 +28,8 @@ class Coin extends Component {
             <CardText>Total Supply: {coin.total_supply} </CardText>
             <CardText>Volume in last 24H: {coin.volume_24h} </CardText>
 
-            <img src={coin.logo} width="300px" height="auto" />
+            <img src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.api_id}.png`}
+              height='64px' width='64px'/>
           </Card>
         </Col>
       </Row>
