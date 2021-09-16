@@ -15,24 +15,28 @@ class Coin extends Component {
 
   render() {
     const { coin } = this.props;
+    console.log(coin)
     return (
-      <Row key={coin.id}>
-        <Col sm="6">
-          <Card body>
-            <CardTitle tag="h5">Crypto {coin.id}</CardTitle>
-            <CardText>Name: {coin.name} </CardText>
-            <CardText>Symbol: {coin.symbol} </CardText>
-            <CardText>Price: {coin.price} </CardText>
-            <CardText>Last Updated: {this.formatLastUpdated(coin.last_updated)} </CardText>
-            <CardText>Market Cap: {coin.market_cap} </CardText>
-            <CardText>Total Supply: {coin.total_supply} </CardText>
-            <CardText>Volume in last 24H: {coin.volume_24h} </CardText>
-
-            <img src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.api_id}.png`}
-              height='64px' width='64px'/>
-          </Card>
-        </Col>
-      </Row>
+      <section className="coin-page">
+        <div className="coin-page-symbol">
+          <h5>{coin.symbol}</h5>
+        </div>
+        <Row key={coin.id}>
+          <Col sm="6">
+            <Card body>
+              <div className="coin-page-card-header">
+                <CardTitle tag="h5">{coin.name}</CardTitle>
+                <img src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.api_id}.png`} height='64px' width='64px'/>
+              </div>
+              <CardText>Price: {coin.price} </CardText>
+              <CardText>Volume in last 24H: {coin.volume_24h} </CardText>
+              <CardText>Market Cap: {coin.market_cap} </CardText>
+              <CardText>Total Supply: {coin.total_supply} </CardText>
+              <CardText>Last Updated: {this.formatLastUpdated(coin.last_updated)} </CardText>
+            </Card>
+          </Col>
+        </Row>
+      </section>
     );
   }
 }
