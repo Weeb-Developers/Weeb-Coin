@@ -20,7 +20,7 @@ class Coin extends Component {
         <div className="coin-page-symbol">
           <h5>{coin.symbol}</h5>
         </div>
-        <Row key={coin.id}>
+        <Row>
           <Col sm="6">
             <Card body>
               <div className="coin-page-card-header">
