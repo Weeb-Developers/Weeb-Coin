@@ -26,17 +26,16 @@ class App extends Component {
     this.getAPI();
     this.getCoins();
     this.getPortfolio();
-    this.refreshApi();
   }
+
   refreshApi() {
     const reloadCount = sessionStorage.getItem("reloadCount");
     if (reloadCount < 1) {
       sessionStorage.setItem("reloadCount", String(reloadCount + 1));
       window.location.reload();
-    } else {
-      sessionStorage.removeItem("reloadCount");
     }
   }
+
   getAPI = () => {
     fetch("/api-data");
   };
