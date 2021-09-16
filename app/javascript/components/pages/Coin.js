@@ -15,7 +15,6 @@ class Coin extends Component {
 
   render() {
     const { coin } = this.props;
-    console.log(coin)
     return (
       <section className="coin-page">
         <div className="coin-page-symbol">
