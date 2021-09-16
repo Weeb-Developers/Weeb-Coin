@@ -36,6 +36,66 @@ class Portfolio extends Component {
       holding: "",
     };
   }
+
+  componentDidMount() {
+    this.getPortfolio();
+  }
+
+  getPortfolio = () => {
+    fetch("/portfolios")
+      .then(response => response.json())
+      .then(payload => this.props.portfolioSetState(payload))
+      .catch(errors => console.log("portfolio errors:", errors))
+  };
+
+  createNewPortfolio = (newPortfolio) => {
+    fetch("/portfolios", {
+      body: JSON.stringify(newPortfolio),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    })
+      .then((response) => {
+        if (response.status === 422) {
+          alert("Something is wrong with your submission.");
+        }
+        return response.json();
+      })
+      .then(() => this.getPortfolio())
+      .catch((errors) => console.log("Create errors:", errors));
+  };
+
+  updatePortfolio = (updatePortfolio, id) => {
+    fetch(`/portfolios/${id}`, {
+      body: JSON.stringify(updatePortfolio),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "PATCH",
+    })
+      .then((response) => {
+        if (response.status === 422) {
+          alert("There is something wrong with your submission.");
+        }
+        return response.json();
+      })
+      .then(() => this.getPortfolio())
+      .catch((errors) => console.log("edit errors:", errors));
+  };
+
+  deletePortfolio = (id) => {
+    fetch(`/portfolios/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((payload) => this.getPortfolio())
+      .catch((errors) => console.log("Portfolio delete errors:", errors));
+  };
+
   getTotalWorth = () => {
     let sum = 0;
     this.props.portfolios.forEach((portfolio) => {
@@ -62,7 +122,7 @@ class Portfolio extends Component {
     this.setState({ form: form });
   };
   handleSubmit = () => {
-    this.props.createNewPortfolio(this.state.form);
+    this.createNewPortfolio(this.state.form);
     let newOpenModal = !this.state.modal;
     this.setState({ modal: newOpenModal });
   };
@@ -77,14 +137,12 @@ class Portfolio extends Component {
   };
 
   handleUpdateSubmit = (portfolio_id) => {
-    this.props.updatePortfolio(this.state.form, portfolio_id);
+    this.updatePortfolio(this.state.form, portfolio_id);
     let updateModal = !this.state.addRemoveModal;
     this.setState({ addRemoveModal: updateModal });
   };
 
   render() {
-    console.log("coin", this.props.coins);
-    console.log("portfolio coins", this.props.portfolios);
     return (
       <>
         <h1>
@@ -97,7 +155,8 @@ class Portfolio extends Component {
             {this.props.coins &&
               this.props.coins.map((coin) => {
                 return (
-                  <DropdownItem onClick={() => this.toggleModal(coin.id)}>
+                  <DropdownItem onClick={() =>this.toggleModal(coin.id)}  key={coin.id}
+                  >
                     {coin.name}
                   </DropdownItem>
                 );
@@ -137,6 +196,7 @@ class Portfolio extends Component {
               <Modal
                 isOpen={this.state.addRemoveModal}
                 toggle={this.toggleUpdateModal}
+                key={`modal-${portfolio.id}`}
               >
                 <ModalHeader toggle={this.toggleUpdateModal}>
                   changing Value
@@ -177,7 +237,7 @@ class Portfolio extends Component {
             this.props.portfolios.map((portfolio) => {
               return (
                 <>
-                  <Row key={portfolio.id}>
+                  <Row key={`rows-${portfolio.id}`}>
                     <Col sm="6">
                       <Card body>
                         <Link to={`/coin/${portfolio.coin.id}`}>
@@ -206,11 +266,11 @@ class Portfolio extends Component {
                             )
                           }
                         >
-                          Add/Remove Coins
+                          Update Coins
                         </Button>
                         <Button
                           onClick={() =>
-                            this.props.deletePortfolio(portfolio.id)
+                            this.deletePortfolio(portfolio.id)
 
                           }
                         >

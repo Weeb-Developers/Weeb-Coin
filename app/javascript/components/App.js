@@ -22,15 +22,15 @@ class App extends Component {
     };
   }
 
-  async componentDidMount() {
-    await this.getAPI();
-    await this.getCoins();
-    await this.getPortfolio();
+  componentDidMount() {
+    this.getAPI();
   }
 
+  portfolioSetState = (payload) => this.setState({ portfolios: payload })
 
   getAPI = () => {
-    fetch("/api-data");
+    fetch("/api-data")
+    .then(() => this.getCoins())
   };
 
   getCoins = () => {
@@ -38,66 +38,6 @@ class App extends Component {
     .then(response => response.json())
     .then(payload => this.setState({ coins: payload }))
     .catch(errors => console.log("index errors:", errors))
-  };
-
-  getPortfolio = () => {
-    fetch("/portfolios")
-      .then((response) => {
-        return response.json();
-      })
-      .then((payload) => {
-        // set the state with the data from the backend into the empty array
-        this.setState({ portfolios: payload });
-      })
-      .catch((errors) => {
-        console.log("index errors:", errors);
-      });
-  };
-
-  createNewPortfolio = (newPortfolio) => {
-    fetch("/portfolios", {
-      body: JSON.stringify(newPortfolio),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    })
-      .then((response) => {
-        if (response.status === 422) {
-          alert("Something is wrong with your submission.");
-        }
-        return response.json();
-      })
-      .then(() => this.getPortfolio())
-      .catch((errors) => console.log("Create errors:", errors));
-  };
-  updatePortfolio = (updatePortfolio, id) => {
-    fetch(`/portfolios/${id}`, {
-      body: JSON.stringify(updatePortfolio),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "PATCH",
-    })
-      .then((response) => {
-        if (response.status === 422) {
-          alert("There is something wrong with your submission.");
-        }
-        return response.json();
-      })
-      .then(() => this.getPortfolio())
-      .catch((errors) => console.log("edit errors:", errors));
-  };
-  deletePortfolio = (id) => {
-    fetch(`/portfolios/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "DELETE",
-    })
-      .then((response) => response.json())
-      .then((payload) => this.getPortfolio())
-      .catch((errors) => console.log("Portfolio delete errors:", errors));
   };
 
   render() {
@@ -151,9 +91,7 @@ class App extends Component {
                   current_user={current_user}
                   portfolios={this.state.portfolios}
                   coins={this.state.coins}
-                  createNewPortfolio={this.createNewPortfolio}
-                  updatePortfolio={this.updatePortfolio}
-                  deletePortfolio={this.deletePortfolio}
+                  portfolioSetState = {this.portfolioSetState}
                 />
               );
             }}
