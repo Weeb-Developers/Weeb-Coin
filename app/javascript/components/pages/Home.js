@@ -44,7 +44,7 @@ class Home extends Component {
                         <img src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.api_id}.png`}
                           height='64px' width='64px'/>
                         <CardText>{coin.name} </CardText>
-                        <CardText>Price: ${coin.price} </CardText>
+                        <CardText>Price: ${coin.price.toFixed(2)} </CardText>
                         <CardText>
                           Last Updated:{" "}
                           {this.formatLastUpdated(coin.last_updated)}{" "}
