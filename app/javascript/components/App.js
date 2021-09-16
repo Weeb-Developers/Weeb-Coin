@@ -22,19 +22,12 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    this.getAPI();
-    this.getCoins();
-    this.getPortfolio();
+  async componentDidMount() {
+    await this.getAPI();
+    await this.getCoins();
+    await this.getPortfolio();
   }
 
-  refreshApi() {
-    const reloadCount = sessionStorage.getItem("reloadCount");
-    if (reloadCount < 1) {
-      sessionStorage.setItem("reloadCount", String(reloadCount + 1));
-      window.location.reload();
-    }
-  }
 
   getAPI = () => {
     fetch("/api-data");
@@ -42,16 +35,9 @@ class App extends Component {
 
   getCoins = () => {
     fetch("/coins")
-      .then((response) => {
-        return response.json();
-      })
-      .then((payload) => {
-        // set the state with the data from the backend into the empty array
-        this.setState({ coins: payload });
-      })
-      .catch((errors) => {
-        console.log("index errors:", errors);
-      });
+    .then(response => response.json())
+    .then(payload => this.setState({ coins: payload }))
+    .catch(errors => console.log("index errors:", errors))
   };
 
   getPortfolio = () => {
@@ -124,7 +110,6 @@ class App extends Component {
     } = this.props;
 
     const API_KEY = process.env.REACT_APP_API_KEY;
-    console.log("key", API_KEY);
 
     return (
       <Router>
