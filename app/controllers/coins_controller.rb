@@ -9,7 +9,7 @@ class CoinsController < ApplicationController
     end
 
     def index
-        coins = Coin.all
+        coins = Coin.all.order(id: :asc)
         render json: coins
     end
 
