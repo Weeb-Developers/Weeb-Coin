@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          has_many :portfolios
          has_many :coins, through: :portfolios
+
+  validates :username, presence:true
+
 end
