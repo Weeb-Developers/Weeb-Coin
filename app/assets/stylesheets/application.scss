@@ -408,3 +408,44 @@ footer ul {
   font-size: 20px;
   margin-top: 10px;
 }
+
+/* -- Crypto Info -- */
+
+.crypto-info-container {
+  margin-bottom: 100px;
+}
+
+.crypto-info-header {
+  text-align: center;
+  margin-top: 45px;
+  margin-bottom: 15px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 30px;
+  filter: drop-shadow(11px 7px 10px black);
+}
+
+.crypto-info-section {
+  background-color: #C4C4C4;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+}
+
+.crypto-info-section h1 {
+  font-family: 'Press Start 2P', cursive;
+  filter: drop-shadow(11px 7px 10px black);
+  color: #1AFF00;
+}
+
+.crypto-info-button {
+  display: flex;
+  justify-content: center;
+}
+
+.crypto-info-button button {
+  padding: 10px;
+  background-color: #1AFF00;
+  border: none;
+  border-radius: 10px;
+}
