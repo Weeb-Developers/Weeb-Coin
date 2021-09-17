@@ -69,7 +69,7 @@ We use <https://coinmarketcap.com/api/> to fetch our cryptocurrency data. To gen
 > rails server
 
 * If app still doesn't work you can try running:
-> bundle
+> bundle install
 > bin/webpack
 
 ---
