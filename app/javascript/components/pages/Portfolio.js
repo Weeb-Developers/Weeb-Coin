@@ -172,7 +172,7 @@ class Portfolio extends Component {
             {this.props.coins &&
               this.props.coins.map((coin) => {
                 return (
-                  <DropdownItem onClick={() =>this.toggleModal(coin.id)}  key={coin.id}
+                  <DropdownItem onClick={() =>this.toggleModal(coin.id)}  key={`${coin.id}-${coin.name}`}
                   >
                     {coin.name}
                   </DropdownItem>
@@ -253,8 +253,7 @@ class Portfolio extends Component {
           {this.props.portfolios &&
             this.props.portfolios.map((portfolio) => {
               return (
-                <>
-                  <Row key={`rows-${portfolio.id}`}>
+                  <Row key={`rows-${portfolio.id}`} >
                     <Col sm="6">
                       <Card body>
                         <CardText>{portfolio.coin.symbol}</CardText>
@@ -298,7 +297,6 @@ class Portfolio extends Component {
                       </Card>
                     </Col>
                   </Row>
-                </>
               );
             })}
         </div>
