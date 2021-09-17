@@ -99,7 +99,7 @@ class Portfolio extends Component {
   getTotalWorth = () => {
     let sum = 0;
     this.props.portfolios.forEach((portfolio) => {
-      sum += portfolio.coin.price * portfolio.current_quantity;
+      sum += portfolio.coin.price.toFixed(7) * portfolio.current_quantity.toFixed(7);
     });
     return sum;
   };
@@ -144,14 +144,31 @@ class Portfolio extends Component {
 
   render() {
     return (
-      <>
+      <section className="portfolio-page">
         <h1>
           Hello {this.props.logged_in && this.props.current_user.username}
         </h1>
-        <h3>Total Worth: {this.getTotalWorth()}</h3>
-        <Dropdown isOpen={this.state.isOpen} toggle={this.toggle}>
-          <DropdownToggle caret>Add Coins:</DropdownToggle>
-          <DropdownMenu>
+        <h3>Total Worth: {this.getTotalWorth().toFixed(2)}</h3>
+        <Dropdown direction="right" isOpen={this.state.isOpen} toggle={this.toggle}>
+          <DropdownToggle caret className="dropdown-btn">Add Coins:</DropdownToggle>
+          <DropdownMenu
+              modifiers={{
+                setMaxHeight: {
+                  enabled: true,
+                  order: 890,
+                  fn: (data) => {
+                    return {
+                      ...data,
+                      styles: {
+                        ...data.styles,
+                        overflow: 'auto',
+                        maxHeight: '300px',
+                      },
+                    };
+                  },
+                },
+              }}
+          >
             {this.props.coins &&
               this.props.coins.map((coin) => {
                 return (
@@ -165,7 +182,7 @@ class Portfolio extends Component {
         </Dropdown>
 
         <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
-          <ModalHeader toggle={this.toggleModal}>Adding Value</ModalHeader>
+          <ModalHeader toggle={this.toggleModal}>Add Holdings</ModalHeader>
           <ModalBody>
             <Form>
               <FormGroup>
@@ -199,10 +216,10 @@ class Portfolio extends Component {
                 key={`modal-${portfolio.id}`}
               >
                 <ModalHeader toggle={this.toggleUpdateModal}>
-                  changing Value
+                  Change Holdings
                 </ModalHeader>
                 <ModalBody>
-                  Current holdings: {this.state.holding}
+                  Current Holdings: {this.state.holding}
                   <Form>
                     <FormGroup>
                       <Label for="current_quantity">Quantity</Label>
@@ -231,8 +248,8 @@ class Portfolio extends Component {
             );
           })}
 
-        <div>
-          Current Crypto Curriences
+        <div className="portfolio-page-portfolios">
+          Current Crypto Currencies
           {this.props.portfolios &&
             this.props.portfolios.map((portfolio) => {
               return (
@@ -240,24 +257,24 @@ class Portfolio extends Component {
                   <Row key={`rows-${portfolio.id}`}>
                     <Col sm="6">
                       <Card body>
-                        <Link to={`/coin/${portfolio.coin.id}`}>
-                          <CardTitle tag="h5">
-                            Name: {portfolio.coin.name}{" "}
-                          </CardTitle>
-                        </Link>
-                        <CardText>Symbol: {portfolio.coin.symbol} </CardText>
-                        <CardText>Price: {portfolio.coin.price} </CardText>
-                        <CardText>
-                          Holdings: {portfolio.current_quantity}
-                        </CardText>
-                        <CardText>
-                          Amount: $
-                          {portfolio.coin.price * portfolio.current_quantity}{" "}
-                        </CardText>
+                        <CardText>{portfolio.coin.symbol}</CardText>
                         <Link to={`/coin/${portfolio.coin.id}`}>
                           <img src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${portfolio.coin.api_id}.png`}
                             height='64px' width='64px'/>
                         </Link>
+                        <Link to={`/coin/${portfolio.coin.id}`}>
+                          <CardTitle tag="h5">
+                            {portfolio.coin.name}
+                          </CardTitle>
+                        </Link>
+                        <CardText>Price: ${portfolio.coin.price.toFixed(7)} </CardText>
+                        <CardText>
+                          Holdings: {portfolio.current_quantity}
+                        </CardText>
+                        <CardText>
+                          Amount: ${(portfolio.coin.price.toFixed(7) * portfolio.current_quantity.toFixed(7)).toFixed(7)}
+                        </CardText>
+                        
                         <Button
                           onClick={() =>
                             this.toggleUpdateModal(
@@ -265,6 +282,7 @@ class Portfolio extends Component {
                               portfolio.current_quantity
                             )
                           }
+                          color="success"
                         >
                           Update Coins
                         </Button>
@@ -273,6 +291,7 @@ class Portfolio extends Component {
                             this.deletePortfolio(portfolio.id)
 
                           }
+                          color="danger"
                         >
                           Delete Coin
                         </Button>
@@ -283,7 +302,7 @@ class Portfolio extends Component {
               );
             })}
         </div>
-      </>
+      </section>
     );
   }
 }
