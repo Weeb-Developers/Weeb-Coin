@@ -2,16 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Portfolio, type: :model do
 
-  # :current_quantity, :initial_quantity, :coin_id, :user_id,
 
-#   it "should validate user_id" do
-#     portfolio=  Portfolio.create( 
-#   user_id: 1,
-#   coin_id: 1,
-#   initial_quantity: 0,
-#   current_quantity: 10)
-#   expect(portfolio.errors[:user_id]).to_not be_empty
-# end
 
   it "should validate user_id" do
     portfolio=  Portfolio.create( 

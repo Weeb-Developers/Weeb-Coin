@@ -1,17 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Coin, type: :model do
-  # it "should validate price" do
-  #   coin =  Coin.create( 
-  # name: 'bitcoin',
-  # symbol: 'BTC',
-  # price: 46000,
-  # volume_24h: 100000,
-  # market_cap: 23000000,
-  # total_supply: 400000,
-  # last_updated: '2021-09-15 00:00:00',
-  # api_id: 1)
-  # expect(coin.errors[:price]).to_not be_empty
+
 
   it "should validate price" do
     coin =  Coin.create( name: 'bitcoin',
@@ -59,7 +49,7 @@ RSpec.describe Coin, type: :model do
   api_id: 1)
   expect(coin.errors[:volume_24h]).to_not be_empty
   end
-  
+
   it "should validate market_cap" do
     coin =  Coin.create( 
   name: 'bitcoin',
