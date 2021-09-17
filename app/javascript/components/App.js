@@ -84,6 +84,7 @@ class App extends Component {
           <Route path="/cryptoinfo" component={CryptoInfo} />
           <Route
             path="/portfolio"
+            onEnter={this.getAPI}
             render={(props) => {
               return (
                 <Portfolio
