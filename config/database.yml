@@ -84,3 +84,4 @@ production:
   database: weeb_coin_app_production
   username: weeb_coin_app
   password: <%= ENV['WEEB_COIN_APP_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
