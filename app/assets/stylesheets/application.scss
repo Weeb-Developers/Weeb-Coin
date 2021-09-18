@@ -1,6 +1,6 @@
-@import 'bootstrap';
+@import "bootstrap";
 
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 * {
   margin: 0;
@@ -11,7 +11,7 @@
 
 body {
   background-color: #929492;
-  color: #1AFF00;
+  color: #1aff00;
 }
 
 /* -- Devise -- */
@@ -23,7 +23,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #1AFF00;
+  color: #1aff00;
   height: 100vh;
 }
 
@@ -37,18 +37,18 @@ body {
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
   border: none;
-  background-color: #1AFF00;
+  background-color: #1aff00;
   padding: 5px;
   border-radius: 5px;
 }
 
-.form-body .login-container a{
+.form-body .login-container a {
   font-size: 20px;
-  color: #1AFF00;
+  color: #1aff00;
 }
 
-.form-body h2{
-  font-family: 'Press Start 2P', cursive;
+.form-body h2 {
+  font-family: "Press Start 2P", cursive;
   font-size: 30px;
   filter: drop-shadow(11px 7px 10px black);
 }
@@ -76,8 +76,8 @@ body {
 }
 
 .home-page .card-body {
-  border: #1AFF00 solid 5px;
-  background-color: #C4C4C4;
+  border: #1aff00 solid 5px;
+  background-color: #c4c4c4;
   max-height: 200px;
 }
 
@@ -104,7 +104,7 @@ body {
 .home-page h1 {
   margin-top: 45px;
   margin-bottom: 15px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   font-size: 30px;
   filter: drop-shadow(11px 7px 10px black);
 }
@@ -131,7 +131,7 @@ header ul {
 }
 .nav-link {
   margin: 10px;
-  color: #1AFF00;
+  color: #1aff00;
 }
 
 .nav-link:hover {
@@ -139,12 +139,12 @@ header ul {
 }
 
 .nav-link:active {
-  color: #1AFF00;
+  color: #1aff00;
   text-decoration: underline;
 }
 
 .nav-link:visited {
-  color: #1AFF00;
+  color: #1aff00;
 }
 
 .nav-link:visited:hover {
@@ -165,11 +165,11 @@ footer {
   justify-content: center;
   background-color: #626669;
   margin-top: auto;
-  padding:5px;
+  padding: 5px;
 }
 
 footer a {
-  color: #1AFF00;
+  color: #1aff00;
   text-decoration: none;
 }
 
@@ -187,7 +187,7 @@ footer ul {
 .about-us-header {
   text-align: center;
   margin-top: 40px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   font-size: 30px;
   filter: drop-shadow(11px 7px 10px black);
 }
@@ -199,7 +199,7 @@ footer ul {
   margin-top: 25px;
 }
 
-.about-us-container img{
+.about-us-container img {
   display: block;
   margin: auto;
   margin-bottom: 0.8rem;
@@ -273,13 +273,13 @@ footer ul {
 }
 
 .coin-page .card-body {
-  border: #1AFF00 solid 5px;
-  background-color: #C4C4C4;
+  border: #1aff00 solid 5px;
+  background-color: #c4c4c4;
   color: black;
 }
 
 .coin-page-symbol h5 {
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   font-size: 50px;
   filter: drop-shadow(11px 7px 10px black);
 }
@@ -301,7 +301,7 @@ footer ul {
 .portfolio-page h1 {
   margin-top: 45px;
   margin-bottom: 15px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   font-size: 30px;
   filter: drop-shadow(11px 7px 10px black);
 }
@@ -329,8 +329,8 @@ footer ul {
 }
 
 .portfolio-page .card-body {
-  border: #1AFF00 solid 5px;
-  background-color: #C4C4C4;
+  border: #1aff00 solid 5px;
+  background-color: #c4c4c4;
   color: black;
   max-height: 200px;
 }
@@ -369,8 +369,8 @@ footer ul {
 }
 
 .portfolio-page .dropdown-btn {
-  background-color: #1AFF00;
-  border-color: #1AFF00;
+  background-color: #1aff00;
+  border-color: #1aff00;
   color: black;
 }
 
@@ -382,13 +382,13 @@ footer ul {
 
 .modal-content {
   border-radius: 30px;
-  border: #1AFF00 solid 5px;
-  background-color: #C4C4C4;
+  border: #1aff00 solid 5px;
+  background-color: #c4c4c4;
   color: black;
 }
 
 .modal-header button {
-  background-color: #1AFF00;
+  background-color: #1aff00;
   border: black solid 1px;
   border-radius: 50%;
   width: 25px;
@@ -419,13 +419,13 @@ footer ul {
   text-align: center;
   margin-top: 45px;
   margin-bottom: 15px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   font-size: 30px;
   filter: drop-shadow(11px 7px 10px black);
 }
 
 .crypto-info-section {
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   margin: 20px;
   padding: 10px;
   border-radius: 5px;
@@ -433,9 +433,9 @@ footer ul {
 }
 
 .crypto-info-section h1 {
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   filter: drop-shadow(11px 7px 10px black);
-  color: #1AFF00;
+  color: #1aff00;
 }
 
 .crypto-info-button {
@@ -445,7 +445,157 @@ footer ul {
 
 .crypto-info-button button {
   padding: 10px;
-  background-color: #1AFF00;
+  background-color: #1aff00;
   border: none;
   border-radius: 10px;
+}
+
+// video modal styling
+$animation-speed: 0.3s;
+$animation-function: ease-out;
+$backdrop-color: rgba(0, 0, 0, 0.5);
+
+@keyframes modal-video {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-video-inner {
+  from {
+    transform: translate(0, 100px);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+.modal-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $backdrop-color;
+  z-index: 1000000;
+  cursor: pointer;
+  opacity: 1;
+  animation-timing-function: $animation-function;
+  animation-duration: $animation-speed;
+  animation-name: modal-video;
+  -webkit-transition: opacity $animation-speed $animation-function;
+  -moz-transition: opacity $animation-speed $animation-function;
+  -ms-transition: opacity $animation-speed $animation-function;
+  -o-transition: opacity $animation-speed $animation-function;
+  transition: opacity $animation-speed $animation-function;
+}
+
+.modal-video-effect-exit {
+  opacity: 0;
+
+  & .modal-video-movie-wrap {
+    -webkit-transform: translate(0, 100px);
+    -moz-transform: translate(0, 100px);
+    -ms-transform: translate(0, 100px);
+    -o-transform: translate(0, 100px);
+    transform: translate(0, 100px);
+  }
+}
+
+.modal-video-body {
+  max-width: 960px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.modal-video-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  @media (orientation: landscape) {
+    padding: 10px 60px;
+    box-sizing: border-box;
+  }
+}
+
+.modal-video-movie-wrap {
+  width: 100%;
+  height: 0;
+  position: relative;
+  padding-bottom: 56.25%;
+  background-color: #333;
+  animation-timing-function: $animation-function;
+  animation-duration: $animation-speed;
+  animation-name: modal-video-inner;
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+  -webkit-transition: -webkit-transform $animation-speed $animation-function;
+  -moz-transition: -moz-transform $animation-speed $animation-function;
+  -ms-transition: -ms-transform $animation-speed $animation-function;
+  -o-transition: -o-transform $animation-speed $animation-function;
+  transition: transform $animation-speed $animation-function;
+
+  & iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.modal-video-close-btn {
+  position: absolute;
+  z-index: 2;
+  top: -45px;
+  right: 0px;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+
+  @media (orientation: landscape) {
+    top: 0;
+    right: -45px;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #fff;
+    border-radius: 5px;
+    margin-top: -6px;
+  }
 }
