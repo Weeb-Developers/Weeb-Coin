@@ -26,7 +26,7 @@ class AboutUs extends Component {
                             <h3>Arturo Gourentchik</h3>
                             <h3>Project Manager</h3>
                             <div className="about-us-person-info">
-                                <p>Making his transition to the civilian sector, Arturo is dedicated to expanding his coding knowledge and improving his skills as a full-stack web developer.</p>
+                                <p>After a 7 year enlistment in the Navy, Arturo is making his transition to the civilian sector. Arturo decided to move to San Diego to pursue a career in computer programming. He is passionate about cutting edge technology and computers and is dedicated to expanding his coding knowledge and improving his skills as a full-stack web developer.</p><p style={{fontSize: "1rem"}}>www.linkedin.com/in/arturo-gourentchik1992</p>
                             </div>
                         </div>
                     </div>
