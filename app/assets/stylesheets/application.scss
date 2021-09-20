@@ -142,7 +142,9 @@ body {
   filter: drop-shadow(11px 7px 10px black);
 }
 
+
 /* -- Header -- */
+
 header {
   display: flex;
   justify-content: space-between;
@@ -150,6 +152,8 @@ header {
   filter: drop-shadow(6px 7px 10px black);
 }
 
+@media screen and (min-width: 601px) {
+  
 header ul {
   margin-bottom: 0px;
 }
@@ -189,6 +193,25 @@ header ul {
 
 .nav-link:visited:hover {
   color: white;
+}
+.resposive-nav-bar {
+  width: 0 ;
+}
+
+}
+@media screen and (max-width: 600px) {
+  header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #626669;
+    filter: drop-shadow(6px 7px 10px black);
+  }
+  .resposive-nav-bar {
+      width:80%;
+  }
+  .nav-bar {
+    display: block;
+  }
 }
 
 /* -- Footer -- */
