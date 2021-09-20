@@ -27,9 +27,9 @@ class Coin extends Component {
                 <CardTitle tag="h5">{coin.name}</CardTitle>
                 <img src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.api_id}.png`} height='64px' width='64px'/>
               </div>
-              <CardText>Price: {coin.price.toFixed(7)} </CardText>
-              <CardText>Volume in last 24H: {coin.volume_24h.toLocaleString()} </CardText>
-              <CardText>Market Cap: {coin.market_cap.toLocaleString()} </CardText>
+              <CardText>Price: ${coin.price.toFixed(7)} </CardText>
+              <CardText>Volume in last 24H: ${coin.volume_24h.toLocaleString()} </CardText>
+              <CardText>Market Cap: ${coin.market_cap.toLocaleString()} </CardText>
               <CardText>Total Supply: {coin.total_supply.toLocaleString()} </CardText>
               <CardText>Last Updated: {this.formatLastUpdated(coin.last_updated)} </CardText>
             </Card>

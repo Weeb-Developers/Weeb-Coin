@@ -66,6 +66,15 @@ body {
   padding: 5px;
 }
 
+@media only screen and (max-width: 600px) {
+  .home-page .row {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    --bs-gutter-x: 0rem;
+  }
+}
+
 .home-page-div {
   text-align: center;
   margin-bottom: 100px;
@@ -75,10 +84,24 @@ body {
   min-width: 900px;
 }
 
+@media only screen and (max-width: 600px) {
+  .home-page .col-sm-6 {
+    min-width: 0px;
+  }
+}
+
 .home-page .card-body {
   border: #1aff00 solid 5px;
   background-color: #c4c4c4;
   max-height: 200px;
+}
+
+@media only screen and (max-width: 600px) {
+  .home-page .card-body {
+    border: #1aff00 solid 5px;
+    background-color: #c4c4c4;
+    max-height: 100%;
+  }
 }
 
 .home-page .card {
@@ -87,6 +110,16 @@ body {
   justify-content: space-evenly;
   border-radius: 30px;
   filter: drop-shadow(11px 7px 10px black);
+}
+
+@media only screen and (max-width: 600px) {
+  .home-page .card {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 30px;
+    filter: drop-shadow(11px 7px 10px black);
+  }
 }
 
 .home-page a {
@@ -126,6 +159,13 @@ header ul {
   align-items: flex-end;
   justify-content: center;
 }
+
+@media only screen and (max-width: 600px) {
+  .nav-bar {
+    display: block;
+  }
+}
+
 .nav-bar ul {
   padding-left: 0;
 }
@@ -168,6 +208,23 @@ footer {
   padding: 5px;
 }
 
+@media only screen and (max-width: 600px) {
+  footer {
+    font-size: 20px;
+    text-align: center;
+    position: fixed;
+    display: block;
+    left: 0;
+    height: auto;
+    bottom: 0;
+    width: 100%;
+    align-content: center;
+    background-color: #626669;
+    margin-top: auto;
+    padding: 5px;
+  }
+}
+
 footer a {
   color: #1aff00;
   text-decoration: none;
@@ -183,6 +240,20 @@ footer ul {
   padding-right: 10px;
 }
 
+@media only screen and (max-width: 600px) {
+  footer ul {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 0px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  footer p {
+    margin-bottom: 0px;
+  }
+}
+
 /* -- About Us Page -- */
 .about-us-header {
   text-align: center;
@@ -195,7 +266,7 @@ footer ul {
 .about-us-container {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   margin-top: 25px;
 }
 
@@ -249,6 +320,12 @@ footer ul {
   align-items: center;
 }
 
+@media only screen and (max-width: 600px) {
+  .coin-page .col-sm-6 {
+    max-width: 90vw;
+  }
+}
+
 .coin-page-symbol {
   margin-top: 100px;
 }
@@ -257,11 +334,26 @@ footer ul {
   margin-bottom: 140px;
 }
 
+.modal.fade.show {
+  display: flex !important; 
+  align-items: center;
+  justify-content: center;
+}
+
 .coin-page .card {
   border-radius: 30px;
   filter: drop-shadow(11px 7px 10px black);
   min-width: 500px;
   max-width: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+  .coin-page .card {
+    border-radius: 30px;
+    filter: drop-shadow(11px 7px 10px black);
+    min-width: auto;
+    max-width: auto;
+  }
 }
 
 .coin-page .card-text {
@@ -304,6 +396,7 @@ footer ul {
   font-family: "Press Start 2P", cursive;
   font-size: 30px;
   filter: drop-shadow(11px 7px 10px black);
+  text-align: center;
 }
 
 .portfolio-page h3 {
@@ -320,12 +413,31 @@ footer ul {
   padding: 5px;
 }
 
+@media only screen and (max-width: 600px) {
+  .portfolio-page .row {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    --bs-gutter-x: 0rem;
+  }
+}
+
 .portfolio-page .card {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
   border-radius: 30px;
   filter: drop-shadow(11px 7px 10px black);
+}
+
+@media only screen and (max-width: 600px) {
+  .portfolio-page .card {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 30px;
+    filter: drop-shadow(11px 7px 10px black);
+  }
 }
 
 .portfolio-page .card-body {
@@ -335,13 +447,36 @@ footer ul {
   max-height: 200px;
 }
 
+@media only screen and (max-width: 600px) {
+  .portfolio-page .card-body {
+    border: #1aff00 solid 5px;
+    background-color: #c4c4c4;
+    color: black;
+    max-height: 100%;
+  }
+}
+
 .portfolio-page .card-text {
   margin-bottom: 0px;
   font-size: 20px;
 }
 
+@media only screen and (max-width: 600px) {
+  .portfolio-page .card-text {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
+}
+
 .portfolio-page .col-sm-6 {
   min-width: 1100px;
+}
+
+@media only screen and (max-width: 600px) {
+  .portfolio-page .col-sm-6 {
+    min-width: 90vw;
+  }
 }
 
 .portfolio-page-portfolios {
@@ -358,6 +493,17 @@ footer ul {
   margin-right: 5px;
 }
 
+@media only screen and (max-width: 600px) {
+  .portfolio-page a {
+    color: black;
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
 .portfolio-page p {
   margin-left: 5px;
   margin-right: 5px;
@@ -366,6 +512,15 @@ footer ul {
 .portfolio-page .btn {
   margin-left: 5px;
   margin-right: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .portfolio-page .btn {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
 }
 
 .portfolio-page .dropdown-btn {
@@ -407,6 +562,16 @@ footer ul {
   text-align: center;
   font-size: 20px;
   margin-top: 10px;
+}
+
+.modal-dialog {
+  width: 400px;
+}
+
+@media only screen and (max-width: 600px) {
+  .modal-dialog {
+    width: 80vw;
+  }
 }
 
 /* -- Crypto Info -- */
