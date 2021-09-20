@@ -27,6 +27,7 @@ class Header extends Component {
         <ul><NavLink tag={RRNavLink} to="/aboutus" className='nav-link'>About Us</NavLink>{" "}</ul>
         <ul><NavLink tag={RRNavLink} to="/cryptoinfo" className='nav-link'>Crypto Basics</NavLink></ul>
         <ul>{ this.props.logged_in && <NavLink tag={RRNavLink} to="/portfolio" className='nav-link'>My Portfolio</NavLink>}</ul>
+        <ul>{ this.props.logged_in && <NavLink tag={RRNavLink} to="https://github.com/Weeb-Developers/Weeb-Coin" className='nav-link'>Weeb Coin GitHub</NavLink>}</ul>
         <ul>
           {logged_in && (
             <a href={sign_out_route} className="nav-link">
@@ -70,7 +71,7 @@ class Header extends Component {
                   </NavItem>
                 }
                 <NavItem>
-                  <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                  <NavLink href="https://github.com/Weeb-Developers/Weeb-Coin">Weeb-Coin GitHub</NavLink>
                 </NavItem>
               </Nav>
             </Collapse>
