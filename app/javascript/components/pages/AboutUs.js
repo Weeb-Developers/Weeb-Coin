@@ -4,11 +4,10 @@ import chauncy from "../assets/Chauncy.jpg";
 import thomas from "../assets/Thomas.jpg";
 import arturo from "../assets/Arturo.jpg";
 import linkedin from "../assets/linkedin.png";
+import { NavLink } from 'react-router-dom'
 
 class AboutUs extends Component {
-  linkedInClick = () => {
-    window.open("https://www.linkedin.com/in/thomas-nguyen-9665761a7/");
-  };
+
   render() {
     return (
       <div>
@@ -30,17 +29,17 @@ class AboutUs extends Component {
                   scale of support through coding and creating. Like medicine,
                   coding is a never ending journey of change and learning.
                 </p>
-                <a href="/aboutus" onClick={this.linkedInClick}>
+              </div>
+            </div>
+                <a href="https://www.linkedin.com/in/thomas-nguyen-9665761a7" target="_blank">
                   <img
                     src={linkedin}
                     alt="linkedin"
-                    width="80"
-                    height="80"
-                    id="linkedin"
+                    width= "45px"
+                    height= "45px"
+                    id="linkedin1"
                   />
                 </a>
-              </div>
-            </div>
           </div>
           <div className="about-us-person">
             <img
@@ -61,9 +60,15 @@ class AboutUs extends Component {
                   dedicated to expanding his coding knowledge and improving his
                   skills as a full-stack web developer.
                 </p>
-                <p style={{ fontSize: "1rem" }}>
-                  www.linkedin.com/in/arturo-gourentchik1992
-                </p>
+                <a href="http://www.linkedin.com/in/arturo-gourentchik1992" target="_blank">
+                  <img
+                    src={linkedin}
+                    alt="linkedin"
+                    width= "45px"
+                    height= "45px"
+                    id="linkedin2"
+                  />
+                </a>
               </div>
             </div>
           </div>
@@ -85,6 +90,15 @@ class AboutUs extends Component {
                   the San Diego, CA area. He is presently taking a Full Stack
                   Web Development coding bootcamp offered from Learn Academy
                 </p>
+                <a href="https://www.linkedin.com/in/chauncy-sapien/" target="_blank">
+                  <img
+                    src={linkedin}
+                    alt="linkedin"
+                    width= "45px"
+                    height= "45px"
+                    id="linkedin3"
+                  />
+                </a>
               </div>
             </div>
           </div>
@@ -105,6 +119,15 @@ class AboutUs extends Component {
                   solving complex problems and utilizing his background in
                   design to develop creative solutions.
                 </p>
+                <a href="https://www.linkedin.com/in/conrad-harper/" target="_blank">
+                  <img
+                    src={linkedin}
+                    alt="linkedin"
+                    width= "45px"
+                    height= "45px"
+                    id="linkedin4"
+                  />
+                </a>
               </div>
             </div>
           </div>
