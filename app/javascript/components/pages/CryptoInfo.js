@@ -99,7 +99,7 @@ class CryptoInfo extends Component {
           <h1>Blockchain</h1>
           <p>
             The blockchain is just a chain of blocks containing information. In
-            crypto the bloackchain acts as a digital ledger that records every
+            crypto the blockchain acts as a digital ledger that records every
             transaction and is open for anyone to see. Each block contains a
             hash, the previous hash and data that varies depending on the type
             of blockchain. Blockchains are peer to peer, meaning they're
