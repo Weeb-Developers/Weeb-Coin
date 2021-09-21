@@ -146,59 +146,68 @@ body {
 /* -- Header -- */
 
 header {
-  display: flex;
-  justify-content: space-between;
   background-color: #626669;
   filter: drop-shadow(6px 7px 10px black);
 }
 
 @media screen and (min-width: 601px) {
   
-header ul {
-  margin-bottom: 0px;
-}
+  header ul {
+    margin-bottom: 0px;
+  }
 
-.nav-bar {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-@media only screen and (max-width: 600px) {
   .nav-bar {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-home {
+    color: #1aff00;
+    font-family: "Press Start 2P", cursive;
+    font-size: 30px;
+    filter: drop-shadow(11px 7px 10px black);
+  }
+
+  .nav-list {
+    display: flex;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .nav-bar {
+      display: block;
+    }
+  }
+
+  .nav-bar ul {
+    padding-left: 0;
+  }
+  .nav-link {
+    margin: 10px;
+    color: #1aff00;
+  }
+
+  .nav-link:hover {
+    color: white;
+  }
+
+  .nav-link:active {
+    color: #1aff00;
+    text-decoration: underline;
+  }
+
+  .nav-link:visited {
+    color: #1aff00;
+  }
+
+  .nav-link:visited:hover {
+    color: white;
+  }
+  .resposive-nav-bar {
+    display: none;
   }
 }
 
-.nav-bar ul {
-  padding-left: 0;
-}
-.nav-link {
-  margin: 10px;
-  color: #1aff00;
-}
-
-.nav-link:hover {
-  color: white;
-}
-
-.nav-link:active {
-  color: #1aff00;
-  text-decoration: underline;
-}
-
-.nav-link:visited {
-  color: #1aff00;
-}
-
-.nav-link:visited:hover {
-  color: white;
-}
-.resposive-nav-bar {
-  width: 0 ;
-}
-
-}
 @media screen and (max-width: 600px) {
   header {
     display: flex;
@@ -207,11 +216,82 @@ header ul {
     filter: drop-shadow(6px 7px 10px black);
   }
   .resposive-nav-bar {
-      width:80%;
+      width: 100%;
+      padding: 0.5rem;
   }
   .nav-bar {
-    display: block;
+    display: none;
   }
+
+  .navbar-light .navbar-brand a{
+    color: #1aff00;
+    text-decoration: none;
+    font-family: "Press Start 2P", cursive;
+    filter: drop-shadow(11px 7px 10px black);
+  }
+
+  .navbar-light .navbar-brand a:hover {
+    color: white;
+    text-decoration: none;
+    font-family: "Press Start 2P", cursive;
+    filter: drop-shadow(11px 7px 10px black);
+  }
+
+  .nav-item {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .nav-item a {
+    color: #1aff00;
+    text-decoration: none;
+  }
+
+  .nav-item a:visited {
+    color: #1aff00;
+    text-decoration: none;
+  }
+
+  .nav-item a:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav-item.nav-link a {
+    color: #1aff00;
+    text-decoration: none;
+  }
+
+  .nav-item.nav-link a:visited {
+    color: #1aff00;
+    text-decoration: none;
+  }
+
+  .nav-item.nav-link a:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  .mr-2.navbar-toggler {
+    margin-right: 5px;
+
+  }
+
+  .nav-link {
+    padding: 0px;
+    color: #1aff00 !important;
+  }
+
+  .nav-link:hover {
+    padding: 0px;
+    color: white !important;
+  }
+
+  .navbar-light .navbar-toggler {
+    color: #1aff00;
+    border-color: #1aff00;
+  }
+  
 }
 
 /* -- Footer -- */

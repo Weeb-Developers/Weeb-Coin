@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { NavLink as RRNavLink } from "react-router-dom";
-import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { NavLink } from "react-router-dom";
+import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
 
 
 class Header extends Component {
@@ -21,57 +21,60 @@ class Header extends Component {
     return (
       <>
         <header>
-        {/* <meta content="width=device-width, initial-scale=1" name="viewport" /> */}
         <div className='nav-bar'>
-        <ul><NavLink tag={RRNavLink} to="/" className='nav-link'>Home</NavLink>{" "}</ul>
-        <ul><NavLink tag={RRNavLink} to="/aboutus" className='nav-link'>About Us</NavLink>{" "}</ul>
-        <ul><NavLink tag={RRNavLink} to="/cryptoinfo" className='nav-link'>Crypto Basics</NavLink></ul>
-        <ul>{ this.props.logged_in && <NavLink tag={RRNavLink} to="/portfolio" className='nav-link'>My Portfolio</NavLink>}</ul>
-        <ul>{ this.props.logged_in && <NavLink tag={RRNavLink} to="https://github.com/Weeb-Developers/Weeb-Coin" className='nav-link'>Weeb Coin GitHub</NavLink>}</ul>
-        <ul>
-          {logged_in && (
-            <a href={sign_out_route} className="nav-link">
-              Sign Out
-            </a>
-          )}
-        </ul>
-        <ul>
-          {!logged_in && (
-            <a href={sign_in_route} className="nav-link">
-              Sign In
-            </a>
-          )}
-        </ul>
+          <div className="nav-home">
+            <ul><NavLink to="/" className='nav-link'>Weeb Coin</NavLink>{" "}</ul>
+          </div>
+          <div className="nav-list">
+            <ul><NavLink to="/aboutus" className='nav-link'>About Us</NavLink>{" "}</ul>
+            <ul><NavLink to="/cryptoinfo" className='nav-link'>Crypto Basics</NavLink></ul>
+            <ul>{ this.props.logged_in && <NavLink to="/portfolio" className='nav-link'>My Portfolio</NavLink>}</ul>
+            <ul>{ this.props.logged_in && <a href="https://github.com/Weeb-Developers/Weeb-Coin" className='nav-link'>Weeb Coin GitHub</a>}</ul>
+            <ul>
+              {logged_in && (
+                <a href={sign_out_route} className="nav-link">
+                  Sign Out
+                </a>
+              )}
+            </ul>
+            <ul>
+              {!logged_in && (
+                <a href={sign_in_route} className="nav-link">
+                  Sign In
+                </a>
+              )}
+            </ul>
+          </div>
         </div>
 
           <Navbar className='resposive-nav-bar' color="faded" light>
-            <NavbarBrand href="/" className="mr-auto">Home</NavbarBrand>
+            <NavbarBrand className="mr-auto"><NavLink to="/">Weeb Coin</NavLink></NavbarBrand>
             <NavbarToggler onClick={this.toggle} className="mr-2" />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav navbar>
                 <NavItem>
-                  <NavLink href="/aboutus">About Us</NavLink>
+                  <NavLink to="/aboutus">About Us</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/cryptoinfo">Crypto Basics</NavLink>
+                  <NavLink to="/cryptoinfo">Crypto Basics</NavLink>
                 </NavItem>
                 {this.props.logged_in &&
                   <NavItem>
-                    <NavLink href="/portfolio">My Portfolio </NavLink> 
+                    <NavLink to="/portfolio">My Portfolio </NavLink> 
                   </NavItem>
                 }
                 {logged_in && 
                   <NavItem> 
-                    <NavLink href={sign_out_route} className="nav-link">Sign Out</NavLink>
+                    <a href={sign_out_route} className="nav-link">Sign Out</a>
                   </NavItem>
                 }
                 {!logged_in && 
                   <NavItem> 
-                    <NavLink href={sign_in_route} className="nav-link">Sign in</NavLink>
+                    <a href={sign_in_route} className="nav-link">Sign in</a>
                   </NavItem>
                 }
                 <NavItem>
-                  <NavLink href="https://github.com/Weeb-Developers/Weeb-Coin">Weeb-Coin GitHub</NavLink>
+                  <a href="https://github.com/Weeb-Developers/Weeb-Coin">Weeb-Coin GitHub</a>
                 </NavItem>
               </Nav>
             </Collapse>
