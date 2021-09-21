@@ -18,6 +18,6 @@ describe('When show coin page loads', () => {
       logo: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD"
     }
     let img = shallow(<Coin coin={coin}/>).find('img')
-    expect(img.props().src).toEqual("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD")
+    expect(img.props().src).toEqual("https://s2.coinmarketcap.com/static/img/coins/64x64/undefined.png")
   })
 })
